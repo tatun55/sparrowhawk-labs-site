@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="pinion">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- テーマ初期化（FOUC 回避: 描画前に data-theme を確定）。保存値→無ければ OS 設定。 -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.dataset.theme = saved || (dark ? "pinion-dark" : "pinion");
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sparrowhawk Labs — open-source tools for the TALL stack</title>
+    <meta name="description" content="Sparrowhawk Labs ships open-source tools for the Laravel TALL stack: the Sparrowhawk framework, and the Pinion plugin family (pinion-ui, pinion-icons). Crafted by Yakaze Tech Studio." />
+    <link rel="canonical" href="https://sparrowhawk-labs.dev/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sparrowhawk-labs.dev/" />
+    <meta property="og:title" content="Sparrowhawk Labs — open-source tools for the TALL stack" />
+    <meta property="og:description" content="No limit to the speed of building. The Sparrowhawk framework + the Pinion plugin family for the Laravel TALL stack." />
+    <meta property="og:image" content="https://sparrowhawk-labs.dev/images/dummy-sparrowhawk.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Spectral:ital,wght@0,500;0,600;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script type="module" src="/src/main.js"></script>
+    <!-- Google Analytics 4（G-N392MNNNWPT・公開 ID・サイト固定）。anonymize_ip でIP匿名化。 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N392MNNNWPT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N392MNNNWPT', { anonymize_ip: true });
+    </script>
+  </head>
+
+  <body class="font-sans bg-base-100 text-base-content antialiased min-h-screen">
+    <!-- Nav -->
+    <nav class="border-b border-base-300/60">
+      <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <img src="/images/sparrowhawk-light.png" alt="" class="logo-mark h-7 w-7 object-contain" />
+          <span class="font-serif font-semibold tracking-wide">Sparrowhawk&nbsp;Labs</span>
+        </div>
+        <div class="flex items-center gap-5 text-sm text-base-content/60">
+          <a href="#sparrowhawk" class="link-arcane hidden sm:inline">Sparrowhawk</a>
+          <a href="#pinion" class="link-arcane hidden sm:inline">Pinion</a>
+          <a href="https://github.com/sparrowhawk-labs" target="_blank" rel="noopener" class="link-arcane">GitHub&nbsp;↗</a>
+          <!-- ライト/ダーク トグル（pinion ⇄ pinion-dark）。アイコンは main.js が切替 -->
+          <button id="theme-toggle" type="button" aria-label="テーマ切替"
+                  class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-base-300 text-base-content/70 transition hover:border-secondary/50 hover:text-secondary">
+            <svg id="icon-sun" class="h-4 w-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            <svg id="icon-moon" class="h-4 w-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="starfield relative overflow-hidden">
+      <div class="max-w-5xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-20 relative z-10 text-center">
+        <img src="/images/sparrowhawk-light.png" alt="Sparrowhawk wing mark" class="logo-mark mx-auto mb-8 h-24 w-24 object-contain" />
+        <h1 class="font-serif text-4xl md:text-6xl font-semibold tracking-tight mb-4">Sparrowhawk&nbsp;Labs</h1>
+        <p class="font-serif italic text-lg md:text-2xl rune mb-6">"No limit to the speed of building."</p>
+        <p class="text-base-content/60 leading-relaxed max-w-2xl mx-auto mb-8">
+          Open-source tools for the Laravel <strong class="text-base-content">TALL stack</strong> — Tailwind, Alpine, Laravel, Livewire.
+          Built in the heat of client work, then forged into packages anyone can use.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="https://github.com/sparrowhawk-labs" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium bg-secondary text-secondary-content transition hover:opacity-90">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.93.85.09-.66.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.05a9.4 9.4 0 015 0c1.9-1.32 2.74-1.05 2.74-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.26 10.26 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
+            <span>View on GitHub</span>
+          </a>
+          <span class="badge-soft">MIT License</span>
+          <span class="badge-soft"><span class="rune">●</span> Laravel ecosystem</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 pb-20">
+      <!-- Two axes intro -->
+      <p class="text-center text-base-content/60 text-sm max-w-2xl mx-auto mb-14">
+        Sparrowhawk Labs ships two related-but-distinct brand systems under one roof —
+        the <span class="arcane">Sparrowhawk</span> wizard-tools axis, and the <span class="rune">Pinion</span> plugin family
+        (<span class="font-mono text-xs">pinion</span> = 風切り羽, the primary feather a sparrowhawk steers with).
+      </p>
+
+      <!-- Sparrowhawk axis -->
+      <section id="sparrowhawk" class="mb-14">
+        <div class="flex items-center gap-3 mb-6">
+          <img src="/images/sparrowhawk-light.png" alt="" class="logo-mark h-4 w-4 object-contain opacity-80" />
+          <span class="axis-label">The Sparrowhawk axis · wizard tools</span>
+          <span class="h-px flex-1 bg-base-300"></span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Sparrowhawk framework -->
+          <article class="panel panel-hover rounded-xl overflow-hidden">
+            <a href="https://github.com/sparrowhawk-labs/sparrowhawk" target="_blank" rel="noopener" class="block overflow-hidden border-b border-base-300 group">
+              <img src="/images/dummy-sparrowhawk.png" alt="Sparrowhawk framework" class="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+            </a>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-1.5">
+                <img src="/images/sparrowhawk-light.png" alt="" class="logo-mark h-4 w-4 object-contain" />
+                <h3 class="font-serif text-lg font-semibold">Sparrowhawk</h3>
+                <span class="badge-soft">Preview</span>
+              </div>
+              <p class="text-sm text-base-content/60 leading-relaxed mb-3">
+                A canonical TALL-stack app framework — what sits between bare Laravel and Filament/Nova.
+                Conventions, a production-ready skeleton, integration glue, and a catalog of canonical patterns.
+              </p>
+              <a href="https://github.com/sparrowhawk-labs/sparrowhawk" target="_blank" rel="noopener" class="text-sm link-arcane">GitHub ↗</a>
+            </div>
+          </article>
+          <!-- Sparrowhawk Studio -->
+          <article class="panel panel-hover rounded-xl overflow-hidden">
+            <div class="block overflow-hidden border-b border-base-300">
+              <img src="/images/dummy-studio.png" alt="Sparrowhawk Studio" class="w-full aspect-video object-cover" />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-1.5">
+                <img src="/images/sparrowhawk-light.png" alt="" class="logo-mark h-4 w-4 object-contain" />
+                <h3 class="font-serif text-lg font-semibold">Sparrowhawk Studio</h3>
+                <span class="badge-soft">Planned · SaaS</span>
+              </div>
+              <p class="text-sm text-base-content/60 leading-relaxed mb-3">
+                The Sparrowhawk-native visual builder. Drag-and-drop assembly that emits canonical Sparrowhawk code —
+                the same plain Livewire / Alpine / Blade you'd hand-write, generated faster.
+              </p>
+              <span class="text-sm text-base-content/50">Coming later — a hosted workbench.</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Pinion axis -->
+      <section id="pinion" class="mb-16">
+        <div class="flex items-center gap-3 mb-6">
+          <img src="/images/pinion-light.png" alt="" class="logo-mark h-4 w-4 object-contain opacity-80" />
+          <span class="axis-label">The Pinion family · plugins</span>
+          <span class="h-px flex-1 bg-base-300"></span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <!-- Pinion UI -->
+          <article class="panel panel-hover rounded-xl overflow-hidden">
+            <a href="https://github.com/sparrowhawk-labs/pinion-ui" target="_blank" rel="noopener" class="block overflow-hidden border-b border-base-300 group">
+              <img src="/images/dummy-pinion-ui.png" alt="Pinion UI" class="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+            </a>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-1.5">
+                <img src="/images/pinion-light.png" alt="" class="logo-mark h-4 w-4 object-contain" />
+                <h3 class="font-serif text-lg font-semibold">Pinion UI</h3>
+                <span class="badge-soft"><span class="rune">●</span> Packagist</span>
+              </div>
+              <p class="text-sm text-base-content/60 leading-relaxed mb-3">
+                A Blade UI component library on Tailwind v4 + daisyUI v5 + Alpine.js. 46 ready-to-use components
+                and an 11-preset <em class="rune">Tune</em> token system — reshape spacing, radii and type with one attribute.
+              </p>
+              <div class="flex items-center gap-4 text-sm">
+                <a href="https://github.com/sparrowhawk-labs/pinion-ui" target="_blank" rel="noopener" class="link-arcane">GitHub ↗</a>
+                <a href="https://packagist.org/packages/sparrowhawk-labs/pinion-ui" target="_blank" rel="noopener" class="link-arcane">Packagist ↗</a>
+              </div>
+            </div>
+          </article>
+          <!-- Pinion Icons -->
+          <article class="panel panel-hover rounded-xl overflow-hidden">
+            <a href="https://github.com/sparrowhawk-labs/pinion-icons" target="_blank" rel="noopener" class="block overflow-hidden border-b border-base-300 group">
+              <img src="/images/dummy-pinion-icons.png" alt="Pinion Icons" class="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+            </a>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-1.5">
+                <img src="/images/pinion-light.png" alt="" class="logo-mark h-4 w-4 object-contain" />
+                <h3 class="font-serif text-lg font-semibold">Pinion Icons</h3>
+                <span class="badge-soft"><span class="rune">●</span> Packagist</span>
+              </div>
+              <p class="text-sm text-base-content/60 leading-relaxed mb-3">
+                A unified icon system for Laravel Blade. One <code class="code rounded px-1 py-0.5 text-xs">&lt;x-i&gt;</code> tag,
+                four built-in libraries, and a swap-the-variant trick across Solar line art, Fluent emoji and 8-bit pixel art. 7,400+ icons.
+              </p>
+              <div class="flex items-center gap-4 text-sm">
+                <a href="https://github.com/sparrowhawk-labs/pinion-icons" target="_blank" rel="noopener" class="link-arcane">GitHub ↗</a>
+                <a href="https://packagist.org/packages/sparrowhawk-labs/pinion-icons" target="_blank" rel="noopener" class="link-arcane">Packagist ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Inspiration -->
+      <section class="panel rounded-xl p-6 md:p-8 text-center">
+        <p class="axis-label mb-3">The name</p>
+        <p class="text-base-content/60 leading-relaxed max-w-2xl mx-auto text-sm">
+          The project draws its name from Ursula K. Le Guin's <em class="text-base-content">Earthsea</em> — a young wizard,
+          <span class="rune">Sparrowhawk</span>, whose path from apprentice to mage mirrors a developer learning to wield
+          powerful tools with care. The <em class="text-base-content">true name</em> motif fits open source:
+          <span class="text-base-content">name a thing well, and you can work with it.</span>
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-base-300/60 py-8">
+      <div class="max-w-5xl mx-auto px-6 flex flex-col items-center gap-3 text-center">
+        <div class="flex items-center gap-2.5">
+          <img src="/images/sparrowhawk-light.png" alt="" class="logo-mark h-6 w-6 object-contain" />
+          <span class="font-serif font-semibold tracking-wide text-sm">Sparrowhawk Labs</span>
+        </div>
+        <p class="text-xs text-base-content/60">Crafted by <a href="https://yakaze.com" class="link-arcane">Yakaze Tech Studio ↗</a></p>
+        <div class="text-[10px] text-base-content/40">MIT Licensed · © Sparrowhawk Labs</div>
+      </div>
+    </footer>
+  </body>
+</html>
